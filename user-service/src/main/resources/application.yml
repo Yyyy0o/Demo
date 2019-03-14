@@ -1,0 +1,10 @@
+server:
+  port: 8082
+logging:
+  level:
+   root: info
+   org.springframework.web: info
+  file: userServer.log
+spring:
+  redis:
+    password: 360kinder
