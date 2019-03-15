@@ -19,6 +19,7 @@
         <module>user-service</module>
         <module>garden-service</module>
         <module>mongo</module>
+        <module>photo</module>
     </modules>
 
     <dependencies>
