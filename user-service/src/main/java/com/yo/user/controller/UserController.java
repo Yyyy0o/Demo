@@ -30,10 +30,10 @@ public class UserController {
 
     @GetMapping("user/{id}")
     public Kdgt listUser(@PathVariable String id) {
-//        String url = "http://127.0.0.1:8083/kdgt/" + id;
-        List<ServiceInstance> instances = discoveryClient.getInstances("garden-service");
-        ServiceInstance instance = instances.get(0);
-        String url = "http://" + instance.getHost() + ":" + instance.getPort() + "/kdgt/" + id;
+//        List<ServiceInstance> instances = discoveryClient.getInstances("garden-service");
+//        ServiceInstance instance = instances.get(0);
+//        String url = "http://" + instance.getHost() + ":" + instance.getPort() + "/kdgt/" + id;
+        String url = "http://garden-service/kdgt/" + id;
         return restTemplate.getForObject(url, Kdgt.class);
     }
 
