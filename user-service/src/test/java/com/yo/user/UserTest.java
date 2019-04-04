@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.netflix.ribbon.RibbonLoadBalancerClient;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -29,12 +31,25 @@ public class UserTest {
         Object no1 = redisTemplate.opsForValue().get("no1");
         System.out.println(no1);
 
-        User user = new User(1, "张三", 12,"武侯区");
+        User user = new User(1, "张三", 12, "武侯区");
         redisTemplate.opsForValue().set("user2", user);
         Object user2 = redisTemplate.opsForValue().get("user2");
         System.out.println(user2);
         User object = gson.fromJson(user2.toString(), User.class);
         System.out.println(object.getName());
+    }
+
+    @Autowired
+    RibbonLoadBalancerClient client;
+
+    @Test
+    public void ribbonTest() {
+
+        for (int i = 0; i < 100; i++) {
+            ServiceInstance instance = client.choose("garden-service");
+            System.out.println(instance.getHost() + " : " + instance.getPort());
+        }
+
     }
 
 }

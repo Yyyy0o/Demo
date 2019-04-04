@@ -9,6 +9,10 @@ spring:
     password: 360kinder
   application:
     name: user-service
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
 eureka:
   client:
     service-url:
@@ -21,3 +25,10 @@ eureka:
     lease-expiration-duration-in-seconds: 10
     lease-renewal-interval-in-seconds: 5
     instance-id: ${spring.application.name}:${server.port}
+garden-service:
+  ribbon:
+    ConnectionTimeout: 250
+    ReadTimeut: 1000
+    OkToRetryOnAllOperations: true
+    MaxAutoRetriesNextServer: 1
+    MaxAutoRetries: 1
