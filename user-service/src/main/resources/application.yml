@@ -32,3 +32,13 @@ garden-service:
     OkToRetryOnAllOperations: true
     MaxAutoRetriesNextServer: 1
     MaxAutoRetries: 1
+hystrix:
+  command:
+    default:
+     execution:
+      isolation:
+       thread:
+        timeoutInMilliseconds: 2000
+feign:
+ hystrix:
+  enabled: true
