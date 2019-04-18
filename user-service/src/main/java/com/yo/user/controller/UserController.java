@@ -1,8 +1,6 @@
 package com.yo.user.controller;
 
-import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.ribbon.proxy.annotation.Hystrix;
 import com.yo.user.entity.Kdgt;
 import com.yo.user.feign.KdgtFeignClient;
 import org.slf4j.Logger;
@@ -27,7 +25,12 @@ public class UserController {
     @GetMapping("user/{id}")
     @HystrixCommand
     public Kdgt listUser(@PathVariable String id) {
-        return userFeignClient.getKdgt(id);
+        Kdgt kdgt = userFeignClient.getKdgt(id);
+        if (kdgt == null) {
+            kdgt = new Kdgt();
+            kdgt.setName("么有该园所");
+        }
+        return kdgt;
     }
 
 }
