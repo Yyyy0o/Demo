@@ -28,7 +28,7 @@ public class GardenController {
 
     @GetMapping("kdgt/{id}")
     public Kdgt getKdgt(@PathVariable Long id) {
-        return kdgtDao.findById(id).get();
+        return kdgtDao.findById(id).orElse(null);
     }
 
 }

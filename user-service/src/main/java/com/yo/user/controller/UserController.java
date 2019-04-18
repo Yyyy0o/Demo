@@ -34,7 +34,12 @@ public class UserController {
 //        ServiceInstance instance = instances.get(0);
 //        String url = "http://" + instance.getHost() + ":" + instance.getPort() + "/kdgt/" + id;
         String url = "http://garden-service/kdgt/" + id;
-        return restTemplate.getForObject(url, Kdgt.class);
+        Kdgt kdgt = restTemplate.getForObject(url, Kdgt.class);
+        if (kdgt == null){
+            kdgt = new Kdgt();
+            kdgt.setName("么有该园所");
+        }
+        return kdgt;
     }
 
 }
