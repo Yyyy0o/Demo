@@ -1,4 +1,4 @@
-package java.com.yo.leetcode;
+package com.yo.leetcode;
 
 import org.junit.Test;
 
@@ -67,4 +67,11 @@ public class LeetCode {
         return rev == x || x == rev / 10;
     }
 
+    @Test
+    public void fun3(){
+        System.out.println(Math.ceil(55.5-55.55));
+        System.out.println(Math.ceil("55.55".compareTo("55.55")));
+        System.out.println(Math.ceil("55.55".compareTo("55.5")));
+        System.out.println(Math.ceil("55.5".compareTo("55.55")));
+    }
 }

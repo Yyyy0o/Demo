@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  * @desc
  * @date 2019/4/6
  **/
-@Component
+//@Component
 public class TokenFilter extends ZuulFilter {
 
     @Override
