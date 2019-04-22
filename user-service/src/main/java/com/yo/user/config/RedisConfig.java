@@ -26,7 +26,7 @@ public class RedisConfig {
     }
 
     @Bean
-    public Gson gson(){
+    public Gson gson() {
         return new Gson();
     }
 }

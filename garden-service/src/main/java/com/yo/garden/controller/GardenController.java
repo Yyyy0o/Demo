@@ -4,6 +4,7 @@ package com.yo.garden.controller;
 import com.yo.garden.dao.KdgtDao;
 import com.yo.garden.entity.Kdgt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +27,12 @@ public class GardenController {
         return kdgtDao.findAll(request).getContent();
     }
 
+    @Cacheable("kdgt")
     @GetMapping("kdgt/{id}")
     public Kdgt getKdgt(@PathVariable Long id) {
         return kdgtDao.findById(id).orElse(null);
     }
+
+
 
 }

@@ -13,6 +13,15 @@ spring:
     loadbalancer:
       retry:
         enabled: true
+  mvc:
+    view:
+      prefix: classpath:/templates/
+      suffix: html
+  resources:
+    cache:
+      period: 0ms
+  cache:
+    type: redis
 eureka:
   client:
     service-url:
