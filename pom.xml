@@ -24,6 +24,7 @@
         <module>eureka-service</module>
         <module>config-service</module>
         <module>photo-service</module>
+        <module>es-service</module>
     </modules>
 
     <dependencies>

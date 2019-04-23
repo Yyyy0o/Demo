@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -18,18 +19,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class UserTest {
 
     @Autowired
-    RedisTemplate redisTemplate;
+    StringRedisTemplate template;
 
     @Test
     public void fun1() {
-        redisTemplate.convertAndSend("news", "message send");
+        template.convertAndSend("news", "message send");
 
         Kdgt kdgt = new Kdgt();
         kdgt.setName("测试员");
-        redisTemplate.opsForValue().set("kdgt", kdgt);
+        template.opsForValue().set("kdgt", JSON.toJSONString(kdgt));
 
-        Kdgt object =   0520
-        redisTemplate.opsForValue().get("kdgt");
-        System.out.println(object);
+        Kdgt object = JSON.parseObject(template.opsForValue().get("kdgt"), Kdgt.class);
+
     }
 }
