@@ -13,7 +13,7 @@ import java.util.Date;
  **/
 
 @Data
-@Document(indexName = "share")
+@Document(indexName = "kdgt",type = "share")
 public class Share {
 
     @Id
